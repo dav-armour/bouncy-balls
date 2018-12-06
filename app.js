@@ -4,7 +4,7 @@ const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 
 let balls = []
-const gravity = 1; // pixels per second
+const gravity = 1; // pixels per animation frame
 const friction = 0.8; // how much momentum is lost on bounce
 const minRadius = 15;
 const maxRadius = 30;
@@ -107,7 +107,7 @@ class Ball {
 
   // Update position of circle
   update() {
-    let skipGravity = false;
+    let skipGravity;
     if (enableBounce) {
       // Check for boundary collision
       if (this.x + this.radius + this.dx > canvas.width || this.x - this.radius + this.dx < 0) {
